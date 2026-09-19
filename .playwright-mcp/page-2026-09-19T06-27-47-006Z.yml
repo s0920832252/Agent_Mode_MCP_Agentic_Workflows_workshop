@@ -1,0 +1,14 @@
+- main [ref=e2]:
+  - generic [ref=e3]:
+    - heading "待辦清單" [level=1] [ref=e4]
+    - button "切換至深色模式" [ref=e5] [cursor=pointer]: 🌙 深色模式
+  - generic [ref=e6]:
+    - textbox "輸入待辦事項..." [ref=e7]
+    - button "新增" [ref=e8] [cursor=pointer]
+  - navigation "待辦事項篩選" [ref=e9]:
+    - button "全部" [pressed] [ref=e10] [cursor=pointer]
+    - button "未完成" [ref=e11] [cursor=pointer]
+    - button "已完成" [ref=e12] [cursor=pointer]
+  - list
+  - paragraph [ref=e13]: 還沒有任何待辦事項,新增一個吧!
+  - generic [ref=e14]: 未完成:0 項

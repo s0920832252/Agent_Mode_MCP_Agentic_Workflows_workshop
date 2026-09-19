@@ -14,6 +14,34 @@
   --shadow-card: 0 8px 24px rgba(0, 0, 0, 0.08);
 }
 
+:root[data-theme="dark"] {
+  --color-bg: #171a21;
+  --color-card-bg: #242832;
+  --color-primary: #7d9cff;
+  --color-primary-hover: #9ab2ff;
+  --color-danger: #ff7373;
+  --color-danger-hover: #ff8f8f;
+  --color-text: #f1f3f8;
+  --color-text-muted: #aeb5c2;
+  --color-border: #3b424f;
+  --shadow-card: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --color-bg: #171a21;
+    --color-card-bg: #242832;
+    --color-primary: #7d9cff;
+    --color-primary-hover: #9ab2ff;
+    --color-danger: #ff7373;
+    --color-danger-hover: #ff8f8f;
+    --color-text: #f1f3f8;
+    --color-text-muted: #aeb5c2;
+    --color-border: #3b424f;
+    --shadow-card: 0 8px 24px rgba(0, 0, 0, 0.3);
+  }
+}
+
 * {
   box-sizing: border-box;
 }
@@ -40,10 +68,41 @@ body {
   padding: 28px 24px;
 }
 
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.header h1 {
+  margin: 0;
+}
+
+.theme-toggle,
+.filter-btn {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background-color: transparent;
+  color: var(--color-text);
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.theme-toggle {
+  padding: 8px 10px;
+  font-size: 0.85rem;
+  white-space: nowrap;
+}
+
+.theme-toggle:hover,
+.filter-btn:hover {
+  background-color: var(--color-border);
+}
+
 h1 {
-  margin: 0 0 20px;
   font-size: 1.5rem;
-  text-align: center;
 }
 
 .todo-form {
@@ -79,6 +138,24 @@ h1 {
 
 .todo-form button:hover {
   background-color: var(--color-primary-hover);
+}
+
+.filter-bar {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.filter-btn {
+  flex: 1;
+  padding: 8px 10px;
+  font-size: 0.9rem;
+}
+
+.filter-btn.active {
+  border-color: var(--color-primary);
+  background-color: var(--color-primary);
+  color: #fff;
 }
 
 .todo-list {
@@ -165,5 +242,13 @@ h1 {
 
   .todo-form button {
     width: 100%;
+  }
+
+  .header {
+    align-items: flex-start;
+  }
+
+  .theme-toggle {
+    font-size: 0.8rem;
   }
 }
