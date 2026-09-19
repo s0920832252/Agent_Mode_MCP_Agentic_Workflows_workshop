@@ -1,44 +1,53 @@
 /* 顏色與樣式共用變數 */
 :root {
-  --color-bg: #f2f4f8;
-  --color-card-bg: #ffffff;
-  --color-primary: #4f7cff;
-  --color-primary-hover: #3d63d9;
-  --color-danger: #ff5c5c;
-  --color-danger-hover: #e04848;
-  --color-text: #2b2f38;
-  --color-text-muted: #9aa0ac;
-  --color-border: #e5e8ee;
-  --radius-md: 12px;
-  --radius-lg: 18px;
-  --shadow-card: 0 8px 24px rgba(0, 0, 0, 0.08);
+  --color-bg: #fff4ed;
+  --color-bg-accent: #ffe1dc;
+  --color-card-bg: #fffdf9;
+  --color-primary: #f38b85;
+  --color-primary-hover: #e87578;
+  --color-danger: #e98b9b;
+  --color-danger-hover: #d9768c;
+  --color-text: #4e3d4a;
+  --color-text-muted: #a98798;
+  --color-border: #f2d8d2;
+  --color-surface-accent: #fff0d8;
+  --color-on-primary: #fffdf9;
+  --radius-md: 14px;
+  --radius-lg: 26px;
+  --shadow-card: 0 18px 40px rgba(184, 111, 116, 0.16);
 }
 
 :root[data-theme="dark"] {
-  --color-bg: #171a21;
-  --color-card-bg: #242832;
-  --color-primary: #7d9cff;
-  --color-primary-hover: #9ab2ff;
-  --color-danger: #ff7373;
-  --color-danger-hover: #ff8f8f;
-  --color-text: #f1f3f8;
-  --color-text-muted: #aeb5c2;
-  --color-border: #3b424f;
-  --shadow-card: 0 8px 24px rgba(0, 0, 0, 0.3);
+  --color-bg: #302936;
+  --color-bg-accent: #493344;
+  --color-card-bg: #413544;
+  --color-primary: #f3a09a;
+  --color-primary-hover: #ffb3a4;
+  --color-danger: #ee9aaa;
+  --color-danger-hover: #f5adba;
+  --color-text: #fff0e8;
+  --color-text-muted: #d5acb7;
+  --color-border: #624955;
+  --color-surface-accent: #55434c;
+  --color-on-primary: #493344;
+  --shadow-card: 0 18px 40px rgba(12, 7, 15, 0.35);
 }
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --color-bg: #171a21;
-    --color-card-bg: #242832;
-    --color-primary: #7d9cff;
-    --color-primary-hover: #9ab2ff;
-    --color-danger: #ff7373;
-    --color-danger-hover: #ff8f8f;
-    --color-text: #f1f3f8;
-    --color-text-muted: #aeb5c2;
-    --color-border: #3b424f;
-    --shadow-card: 0 8px 24px rgba(0, 0, 0, 0.3);
+    --color-bg: #302936;
+    --color-bg-accent: #493344;
+    --color-card-bg: #413544;
+    --color-primary: #f3a09a;
+    --color-primary-hover: #ffb3a4;
+    --color-danger: #ee9aaa;
+    --color-danger-hover: #f5adba;
+    --color-text: #fff0e8;
+    --color-text-muted: #d5acb7;
+    --color-border: #624955;
+    --color-surface-accent: #55434c;
+    --color-on-primary: #493344;
+    --shadow-card: 0 18px 40px rgba(12, 7, 15, 0.35);
   }
 }
 
@@ -53,8 +62,9 @@ body {
   justify-content: center;
   align-items: flex-start;
   padding: 40px 16px;
-  background-color: var(--color-bg);
-  font-family: "Microsoft JhengHei", "PingFang TC", -apple-system, sans-serif;
+  background: var(--color-bg);
+  background-image: radial-gradient(circle at 15% 10%, var(--color-bg-accent) 0 9%, transparent 28%), radial-gradient(circle at 90% 85%, var(--color-surface-accent) 0 7%, transparent 24%);
+  font-family: "Trebuchet MS", "Microsoft JhengHei", "PingFang TC", sans-serif;
   color: var(--color-text);
 }
 
@@ -66,6 +76,7 @@ body {
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-card);
   padding: 28px 24px;
+  border: 2px solid var(--color-border);
 }
 
 .header {
@@ -78,6 +89,8 @@ body {
 
 .header h1 {
   margin: 0;
+  color: var(--color-primary);
+  letter-spacing: 0.02em;
 }
 
 .theme-toggle,
@@ -98,7 +111,8 @@ body {
 
 .theme-toggle:hover,
 .filter-btn:hover {
-  background-color: var(--color-border);
+  background-color: var(--color-surface-accent);
+  border-color: var(--color-primary);
 }
 
 h1 {
@@ -119,6 +133,8 @@ h1 {
   font-size: 1rem;
   outline: none;
   transition: border-color 0.15s ease;
+  background-color: var(--color-card-bg);
+  color: var(--color-text);
 }
 
 .todo-form input[type="text"]:focus {
@@ -130,7 +146,7 @@ h1 {
   border: none;
   border-radius: var(--radius-md);
   background-color: var(--color-primary);
-  color: #fff;
+  color: var(--color-on-primary);
   font-size: 1rem;
   cursor: pointer;
   transition: background-color 0.15s ease;
@@ -170,6 +186,12 @@ h1 {
   gap: 10px;
   padding: 12px 4px;
   border-bottom: 1px solid var(--color-border);
+  transition: background-color 0.15s ease, transform 0.15s ease;
+}
+
+.todo-item:hover {
+  background-color: var(--color-surface-accent);
+  transform: translateX(2px);
 }
 
 .todo-item:last-child {
@@ -200,7 +222,7 @@ h1 {
 .todo-item .delete-btn {
   border: none;
   background-color: var(--color-danger);
-  color: #fff;
+  color: var(--color-on-primary);
   border-radius: var(--radius-md);
   padding: 6px 10px;
   font-size: 0.85rem;
@@ -218,6 +240,8 @@ h1 {
   color: var(--color-text-muted);
   padding: 24px 0;
   margin: 0;
+  background-color: var(--color-surface-accent);
+  border-radius: var(--radius-md);
 }
 
 .footer {
